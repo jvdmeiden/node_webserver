@@ -37,8 +37,11 @@ http.createServer(function(request, response) {
 
   var uri = url.parse(request.url).pathname;
     if (uri == '/' || uri == ''){
-      uri='index.html';
+      uri='/index.html';
     }
+    if (  request.headers.host == 'uniformresourcelocator.info' ){
+      uri='/URLinfo'+uri;
+    } 
     if (uri=='/geoip') {
       var request=url.parse(request.url).query;
       console.log(request);
